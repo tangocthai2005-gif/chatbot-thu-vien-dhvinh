@@ -1,0 +1,444 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Be Vietnam Pro',sans-serif}
+.wrap{max-width:500px;margin:.8rem auto;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;height:640px;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.hdr{background:linear-gradient(135deg,#1a3a5c,#1b6ca8);padding:12px 15px;display:flex;align-items:center;gap:10px}
+.hdr-av{width:40px;height:40px;border-radius:50%;background:#f39c12;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.hdr-info h3{color:#fff;font-size:13px;font-weight:600;margin-bottom:1px}
+.hdr-info p{color:#a9cce3;font-size:10.5px}
+.dot{width:7px;height:7px;background:#2ecc71;border-radius:50%;display:inline-block;margin-right:4px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.badge{font-size:9.5px;padding:2px 7px;border-radius:10px;margin-left:6px;font-weight:600}
+.badge.sv{background:#2ecc71;color:#fff}
+.badge.cb{background:#f39c12;color:#fff}
+.badge.vl{background:#95a5a6;color:#fff}
+.body{flex:1;overflow-y:auto;padding:13px;display:flex;flex-direction:column;gap:9px;background:var(--color-background-secondary)}
+.body::-webkit-scrollbar{width:4px}
+.body::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.msg{display:flex;gap:7px;align-items:flex-end;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.msg.u{flex-direction:row-reverse}
+.av{width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:#1b4f72;color:#fff}
+.msg.u .av{background:#e67e22}
+.bub{max-width:83%;padding:9px 13px;border-radius:15px;font-size:12.5px;line-height:1.65;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary)}
+.msg.u .bub{background:#1b4f72;color:#fff;border-color:#1b4f72}
+.bub a{color:#2980b9;text-decoration:underline}
+.msg.u .bub a{color:#aed6f1}
+.qw{display:flex;flex-wrap:wrap;gap:5px;padding:6px 12px 3px}
+.qb{font-size:11px;padding:5px 10px;border:0.5px solid #1b6ca8;border-radius:13px;background:transparent;color:#1b6ca8;cursor:pointer;font-family:inherit;transition:all .15s;font-weight:500}
+.qb:hover{background:#1b6ca8;color:#fff}
+.ir{display:flex;gap:7px;padding:10px 11px;border-top:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary)}
+.ii{flex:1;border:0.5px solid var(--color-border-secondary);border-radius:17px;padding:7px 13px;font-size:12.5px;font-family:inherit;background:var(--color-background-secondary);color:var(--color-text-primary);outline:none}
+.ii:focus{border-color:#1b6ca8}
+.sb{width:34px;height:34px;border-radius:50%;background:#1b4f72;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;flex-shrink:0}
+.sb:hover{background:#154360}
+.card{background:linear-gradient(135deg,#eaf3fb,#d6eaf8);border:0.5px solid #aed6f1;border-radius:10px;padding:10px 12px;margin-top:6px;font-size:12px;color:#1b4f72}
+.card a{color:#1a5276;font-weight:600;text-decoration:underline}
+.card-title{font-weight:600;margin-bottom:5px;font-size:12.5px}
+.stat-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
+.stat-box{flex:1;min-width:70px;background:#fff;border-radius:8px;padding:7px 8px;text-align:center;border:0.5px solid #aed6f1}
+.stat-num{font-size:15px;font-weight:700;color:#1b4f72}
+.stat-lbl{font-size:9.5px;color:#5d8aaa;margin-top:1px}
+.stars{display:flex;gap:6px;margin:8px 0}
+.star{font-size:22px;cursor:pointer;opacity:.35;transition:opacity .15s,transform .15s}
+.star:hover,.star.on{opacity:1;transform:scale(1.15)}
+.fb-box{width:100%;border:0.5px solid #ccc;border-radius:8px;padding:7px 10px;font-size:12px;font-family:inherit;resize:none;outline:none;margin-top:4px;background:var(--color-background-secondary);color:var(--color-text-primary)}
+.typing-wrap{display:flex;gap:7px;align-items:flex-end}
+.typing-bub{padding:9px 14px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:15px}
+.dots span{display:inline-block;width:5px;height:5px;border-radius:50%;background:#aaa;margin:0 2px;animation:bounce .9s infinite}
+.dots span:nth-child(2){animation-delay:.2s}
+.dots span:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
+.chip{display:inline-block;background:#eaf3fb;color:#1b4f72;font-size:10.5px;padding:2px 8px;border-radius:8px;margin:2px 2px 0 0}
+.note{font-size:10.5px;color:#888;margin-top:4px;display:block;font-style:italic}
+.steps{margin:6px 0;padding-left:14px}
+.steps li{margin:3px 0;font-size:12px;line-height:1.5}
+</style>
+
+<div class="wrap">
+  <div class="hdr">
+    <div class="hdr-av">📚</div>
+    <div class="hdr-info">
+      <h3>Cán bộ Thông tin Ảo <span id="userBadge"></span></h3>
+      <p><span class="dot"></span>TV Nguyễn Thúc Hào – ĐH Vinh · 24/7</p>
+    </div>
+  </div>
+  <div class="body" id="bd"></div>
+  <div id="qw" class="qw"></div>
+  <div class="ir">
+    <input class="ii" id="ii" placeholder="Nhập câu hỏi hoặc tên sách cần tìm..." />
+    <button class="sb" onclick="send()" aria-label="Gửi"><i class="ti ti-send"></i></button>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════
+// CẤU HÌNH ĐƯỜNG LINK OPAC ĐÚNG CHUẨN
+// Hệ thống: ASPX (không phải Koha)
+// ══════════════════════════════════════════
+const OPAC_HOME    = 'https://thuvien.vinhuni.edu.vn';
+const OPAC_SEARCH  = 'https://thuvien.vinhuni.edu.vn/opac/default.aspx?mnuid=14';
+const LIB_WEB      = 'http://lib.vinhuni.edu.vn';
+const LIB_EMAIL    = 'thuviendhv@vinhuni.edu.vn';
+
+// Link OPAC đã sửa đúng: dẫn đến trang tra cứu + hướng dẫn nhập tên sách
+function opacSearchURL(query, type='title') {
+  // Hệ thống ASPX của Libol/VinhUni — trang tìm kiếm tại mnuid=14
+  // Tham số keysearch và searchtype là chuẩn của hệ thống này
+  const base = 'https://thuvien.vinhuni.edu.vn/opac/default.aspx';
+  const params = new URLSearchParams({
+    mnuid: '14',
+    keysearch: query,
+    searchtype: type === 'author' ? '3' : type === 'subject' ? '4' : '2'
+  });
+  return `${base}?${params.toString()}`;
+}
+
+// Card tra cứu đẹp + đúng link
+function opacCard(query, type='title') {
+  const url = opacSearchURL(query, type);
+  const label = type==='author' ? `Tác giả: "${query}"` : type==='subject' ? `Chủ đề: "${query}"` : `Tên sách: "${query}"`;
+  return `<div class="card">
+    <div class="card-title">🔍 Tra cứu ${label}</div>
+    👉 <a href="${url}" target="_blank">Nhấn vào đây để mở kết quả trên OPAC</a>
+    <span class="note">Trang OPAC sẽ mở ra → kết quả hiển thị <b>Còn sẵn / Đã mượn</b> và vị trí kệ sách</span>
+  </div>`;
+}
+
+// ══════════════════════════════════════════
+// GỢI Ý THEO NGÀNH
+// ══════════════════════════════════════════
+const NGANH = {
+  '🎓 Sư phạm / Giáo dục':['Giáo dục học đại cương','Tâm lý học lứa tuổi','Phương pháp dạy học tích cực','Kỹ năng sư phạm'],
+  '💼 Kinh tế / Quản trị':['Kinh tế vi mô','Nguyên lý Marketing','Quản trị học','Tài chính doanh nghiệp'],
+  '💻 Công nghệ thông tin':['Cấu trúc dữ liệu và giải thuật','Lập trình Python cơ bản','Cơ sở dữ liệu','Mạng máy tính'],
+  '📖 Văn học / Ngữ văn':['Văn học Việt Nam hiện đại','Lý luận văn học','Ngôn ngữ học đại cương','Phong cách học tiếng Việt'],
+  '🔬 Khoa học tự nhiên':['Giáo trình Toán cao cấp','Vật lý đại cương','Hóa học đại cương','Sinh học đại cương'],
+  '⚖️ Luật / Hành chính':['Giáo trình Luật Hiến pháp','Luật dân sự Việt Nam','Hành chính công','Lý luận nhà nước và pháp luật'],
+};
+
+const SACH_MOI = [
+  {ten:'Trí tuệ nhân tạo trong giáo dục 2024',nxb:'NXB ĐHQG Hà Nội',nam:'2024'},
+  {ten:'Phương pháp nghiên cứu khoa học',nxb:'NXB Đại học Vinh',nam:'2024'},
+  {ten:'Kỹ năng mềm cho sinh viên',nxb:'NXB Thanh Niên',nam:'2023'},
+  {ten:'Chuyển đổi số trong thư viện',nxb:'NXB KHXH',nam:'2024'},
+];
+
+// ══════════════════════════════════════════
+// TRẠNG THÁI
+// ══════════════════════════════════════════
+let userType = null;
+let searchMode = '';
+let feedbackScore = 0;
+
+const bd = document.getElementById('bd');
+const qw = document.getElementById('qw');
+const ii = document.getElementById('ii');
+
+// ══════════════════════════════════════════
+// UI HELPERS
+// ══════════════════════════════════════════
+function addMsg(html, isUser=false){
+  const w=document.createElement('div'); w.className='msg'+(isUser?' u':'');
+  const av=document.createElement('div'); av.className='av'; av.textContent=isUser?'👤':'📚';
+  const b=document.createElement('div'); b.className='bub'; b.innerHTML=html;
+  w.appendChild(av); w.appendChild(b); bd.appendChild(w);
+  bd.scrollTop=bd.scrollHeight; return b;
+}
+
+function showTyping(cb,delay=500){
+  const w=document.createElement('div'); w.className='typing-wrap msg'; w.id='typing';
+  const av=document.createElement('div'); av.className='av'; av.textContent='📚';
+  const b=document.createElement('div'); b.className='typing-bub';
+  b.innerHTML='<div class="dots"><span></span><span></span><span></span></div>';
+  w.appendChild(av); w.appendChild(b); bd.appendChild(w); bd.scrollTop=bd.scrollHeight;
+  setTimeout(()=>{ const t=document.getElementById('typing'); if(t)t.remove(); cb(); },delay);
+}
+
+function showQ(items){
+  qw.innerHTML='';
+  items.forEach(([lbl,fn])=>{
+    const btn=document.createElement('button'); btn.className='qb'; btn.textContent=lbl;
+    btn.onclick=()=>{ qw.innerHTML=''; addMsg(lbl,true); showTyping(()=>fn(),420); };
+    qw.appendChild(btn);
+  });
+}
+
+function reply(html){ addMsg(html); setTimeout(()=>mainMenu(),300); }
+
+function setBadge(){
+  const b=document.getElementById('userBadge'); if(!b)return;
+  if(!userType){b.innerHTML='';return;}
+  const map={sv:['Sinh viên','sv'],cb:['Cán bộ','cb'],hv:['Học viên','sv'],vl:['Vãng lai','vl']};
+  const [txt,cls]=map[userType]||['',''];
+  b.innerHTML=`<span class="badge ${cls}">${txt}</span>`;
+}
+
+// ══════════════════════════════════════════
+// MENU THEO LOẠI NGƯỜI DÙNG
+// ══════════════════════════════════════════
+function mainMenu(){
+  searchMode=''; ii.placeholder='Nhập câu hỏi hoặc tên sách cần tìm...';
+  if(userType==='vl'){
+    showQ([
+      ['⏰ Giờ mở cửa',()=>reply(KB.gioMoCua)],
+      ['🚶 Quyền lợi vãng lai',()=>reply(KB.vanLai)],
+      ['🔍 Tìm sách trên OPAC',()=>startSearch()],
+      ['🪪 Đăng ký thẻ',()=>askThe()],
+      ['📋 Nội quy',()=>reply(KB.noiQuy)],
+      ['📞 Liên hệ',()=>reply(KB.lienHe)],
+      ['⭐ Đánh giá chatbot',()=>startFeedback()],
+    ]);
+  } else {
+    showQ([
+      ['⏰ Giờ mở cửa',()=>reply(KB.gioMoCua)],
+      ['📦 Mượn – Trả sách',()=>showMuon()],
+      ['🔍 Tìm sách trên OPAC',()=>startSearch()],
+      ['📊 Kho tài liệu',()=>reply(KB.soLuong)],
+      ['📚 Gợi ý theo ngành',()=>startRecommend()],
+      ['📗 Sách mới nhập',()=>showSachMoi()],
+      ['🪪 Thông tin thẻ',()=>showTheInfo()],
+      ['📋 Nội quy',()=>reply(KB.noiQuy)],
+      ['📞 Liên hệ',()=>reply(KB.lienHe)],
+      ['⭐ Đánh giá chatbot',()=>startFeedback()],
+    ]);
+  }
+}
+
+// ══════════════════════════════════════════
+// PHÂN LOẠI NGƯỜI DÙNG
+// ══════════════════════════════════════════
+function showUserType(){
+  addMsg(`Xin chào! Tôi là <b>Cán bộ Thông tin Ảo</b> của<br>📚 <b>Thư viện Nguyễn Thúc Hào – Trường Đại học Vinh</b><br><br>Để tư vấn chính xác nhất, <b>bạn thuộc đối tượng nào?</b>`);
+  showQ([
+    ['🎓 Sinh viên ĐH Vinh',()=>setUser('sv')],
+    ['👨‍🏫 Giảng viên / Cán bộ',()=>setUser('cb')],
+    ['📖 Học viên sau đại học',()=>setUser('hv')],
+    ['🚶 Khách / Người ngoài trường',()=>setUser('vl')],
+  ]);
+}
+
+function setUser(type){
+  userType=type; setBadge();
+  const m={
+    sv:`Chào sinh viên! 🎓 Thẻ sinh viên của bạn <b>đồng thời là thẻ thư viện</b> – chỉ cần kích hoạt tại quầy. Bạn được mượn <b>3 cuốn / 15 ngày</b>.`,
+    cb:`Chào cán bộ/giảng viên! 👨‍🏫 Thẻ viên chức <b>đồng thời là thẻ thư viện</b>. Bạn được ưu tiên mượn <b>5 cuốn / 30 ngày</b>.`,
+    hv:`Chào học viên sau đại học! 📖 Bạn có quyền lợi như sinh viên ĐH Vinh. Liên hệ quầy để kích hoạt thẻ.`,
+    vl:`Chào bạn đọc vãng lai! 🚶 Bạn được <b>vào đọc tại chỗ miễn phí</b> khi xuất trình CCCD. Có thể đăng ký thẻ với Giấy giới thiệu để mượn sách về nhà.`,
+  }[type];
+  addMsg(m); setTimeout(()=>mainMenu(),300);
+}
+
+// ══════════════════════════════════════════
+// TRA CỨU SÁCH – LINK OPAC ĐÃ SỬA ĐÚNG
+// ══════════════════════════════════════════
+function startSearch(){
+  addMsg('Bạn muốn tìm sách theo cách nào?');
+  showQ([
+    ['📝 Theo tên sách',()=>{ searchMode='title'; addMsg('Nhập <b>tên sách</b> vào ô bên dưới 👇'); ii.placeholder='Tên sách cần tìm...'; ii.focus(); }],
+    ['👤 Theo tác giả',()=>{ searchMode='author'; addMsg('Nhập <b>tên tác giả</b> vào ô bên dưới 👇'); ii.placeholder='Tên tác giả...'; ii.focus(); }],
+    ['🔑 Theo chủ đề / từ khóa',()=>{ searchMode='subject'; addMsg('Nhập <b>từ khóa hoặc chủ đề</b> vào ô bên dưới 👇'); ii.placeholder='Từ khóa hoặc chủ đề...'; ii.focus(); }],
+    ['🌐 Vào thẳng trang OPAC',()=>{
+      addMsg(`📚 <b>Hệ thống tra cứu tài liệu OPAC – Thư viện ĐH Vinh:</b>
+<div class="card">
+  <div class="card-title">🌐 Thư viện Nguyễn Thúc Hào – Trang tra cứu</div>
+  👉 <a href="${OPAC_SEARCH}" target="_blank">thuvien.vinhuni.edu.vn/opac/default.aspx</a><br><br>
+  <b>Hướng dẫn nhanh:</b>
+  <ol class="steps">
+    <li>Nhấn link ở trên để mở trang OPAC</li>
+    <li>Chọn tiêu chí: <b>Nhan đề / Tác giả / Từ khóa</b></li>
+    <li>Nhập từ cần tìm → nhấn <b>Tìm kiếm</b></li>
+    <li>Xem <b>tình trạng</b> (Còn sẵn / Đã mượn) và <b>vị trí kệ sách</b></li>
+  </ol>
+</div>`);
+      setTimeout(()=>mainMenu(),400);
+    }],
+  ]);
+}
+
+function doSearch(query, mode){
+  const url = opacSearchURL(query, mode);
+  const typeLabel = mode==='author'?'tác giả':mode==='subject'?'chủ đề':'tên sách';
+  addMsg(`📚 Tra cứu theo ${typeLabel}: <b>"${query}"</b><br><br>
+${opacCard(query, mode)}<br>
+<b>Hướng dẫn đọc kết quả:</b>
+<ul class="steps">
+  <li>Trang OPAC sẽ mở ra với danh sách tài liệu tìm được</li>
+  <li><b style="color:#27ae60">Còn sẵn</b> → đến quầy Lưu hành tầng 1 mượn trực tiếp</li>
+  <li><b style="color:#e74c3c">Đã mượn hết</b> → đặt trước hoặc chờ người trả</li>
+  <li>Ghi lại <b>Ký hiệu xếp giá</b> để tìm đúng kệ sách</li>
+</ul>`);
+  searchMode=''; ii.placeholder='Nhập câu hỏi hoặc tên sách cần tìm...';
+  setTimeout(()=>{
+    showQ([
+      ['🔍 Tìm sách khác',()=>startSearch()],
+      ['📚 Gợi ý theo ngành',()=>startRecommend()],
+      ['🏠 Menu chính',()=>{ addMsg('Tôi có thể giúp gì thêm?'); mainMenu(); }],
+    ]);
+  },300);
+}
+
+// ══════════════════════════════════════════
+// CÁC TÍNH NĂNG KHÁC
+// ══════════════════════════════════════════
+function askThe(){
+  addMsg('Bạn thuộc đối tượng nào?');
+  showQ([
+    ['🎓 Sinh viên ĐH Vinh',()=>reply(KB.lamThe_sv)],
+    ['👨‍🏫 Giảng viên / Cán bộ',()=>reply(KB.lamThe_cb)],
+    ['📖 Học viên sau đại học',()=>reply(KB.lamThe_sv)],
+    ['🚶 Người ngoài trường',()=>reply(KB.lamThe_ngoai)],
+  ]);
+}
+function showTheInfo(){ reply({sv:KB.lamThe_sv,cb:KB.lamThe_cb,hv:KB.lamThe_sv}[userType]||KB.lamThe_ngoai); }
+function showMuon(){ reply(userType==='cb'?KB.muonTra_cb:KB.muonTra_sv); }
+
+function startRecommend(){
+  if(userType==='vl'){addMsg('Tính năng này dành cho bạn đọc có thẻ ĐH Vinh. Bạn có muốn đăng ký thẻ không?');showQ([['🪪 Đăng ký thẻ',()=>askThe()],['🏠 Menu chính',()=>mainMenu()]]);return;}
+  addMsg('📚 Chọn <b>ngành học</b> để tôi gợi ý tài liệu phù hợp:');
+  showQ(Object.keys(NGANH).map(n=>[n,()=>showRecommend(n)]));
+}
+function showRecommend(nganh){
+  const list=NGANH[nganh];
+  let html=`📚 <b>Gợi ý tài liệu – ${nganh}:</b><br><br>`;
+  list.forEach((s,i)=>{
+    html+=`${i+1}. <a href="${opacSearchURL(s,'title')}" target="_blank">${s}</a><br>`;
+  });
+  html+=`<span class="note">Nhấn tên sách → tra cứu trực tiếp trên OPAC Thư viện ĐH Vinh</span>`;
+  addMsg(html);
+  setTimeout(()=>showQ([['📚 Xem ngành khác',()=>startRecommend()],['📗 Sách mới',()=>showSachMoi()],['🏠 Menu chính',()=>{ addMsg('Tôi có thể giúp gì thêm?');mainMenu();}]]),300);
+}
+function showSachMoi(){
+  let html=`📗 <b>Sách mới nhập – Thư viện ĐH Vinh:</b><br><br>`;
+  SACH_MOI.forEach((s,i)=>{
+    html+=`${i+1}. <a href="${opacSearchURL(s.ten,'title')}" target="_blank">${s.ten}</a> <span style="font-size:10.5px;color:#888">(${s.nxb}, ${s.nam})</span><br>`;
+  });
+  html+=`<br><span class="note">Xem đầy đủ tại: <a href="${OPAC_SEARCH}" target="_blank">OPAC thư viện</a></span>`;
+  addMsg(html); setTimeout(()=>mainMenu(),300);
+}
+
+function startFeedback(){
+  feedbackScore=0;
+  const bub=addMsg(`⭐ <b>Đánh giá Cán bộ Thông tin Ảo:</b><br><br>Bạn hài lòng với chatbot không? Chọn số sao:<br>
+<div class="stars" id="stars">${[1,2,3,4,5].map(i=>`<span class="star" onclick="rateStar(${i})">★</span>`).join('')}</div>
+<div id="fb-area" style="display:none"><textarea class="fb-box" id="fb-txt" rows="2" placeholder="Góp ý thêm (tuỳ chọn)..."></textarea></div>`);
+  setTimeout(()=>showQ([['✅ Gửi đánh giá',()=>submitFeedback()]]),200);
+}
+function rateStar(n){
+  feedbackScore=n;
+  document.querySelectorAll('.star').forEach((s,i)=>{s.classList.toggle('on',i<n);});
+  document.getElementById('fb-area').style.display='block';
+}
+function submitFeedback(){
+  const txt=document.getElementById('fb-txt')?.value||'';
+  if(!feedbackScore){addMsg('Bạn chưa chọn số sao! Nhấn vào ⭐ để đánh giá.');showQ([['✅ Gửi đánh giá',()=>submitFeedback()]]);return;}
+  addMsg(`✅ <b>Cảm ơn bạn đã đánh giá!</b><br>${'★'.repeat(feedbackScore)}${'☆'.repeat(5-feedbackScore)} (${feedbackScore}/5 sao)${txt?`<br><i>Góp ý: ${txt}</i>`:''}<br><br>Phản hồi của bạn giúp thư viện cải thiện dịch vụ. Trân trọng cảm ơn! 📚`);
+  setTimeout(()=>mainMenu(),400);
+}
+
+// ══════════════════════════════════════════
+// CƠ SỞ TRI THỨC
+// ══════════════════════════════════════════
+const KB={
+  gioMoCua:`⏰ <b>Giờ mở cửa – TV Nguyễn Thúc Hào:</b><br>• <b>T2–T6 (hành chính):</b> 7h30–11h30 và 13h30–17h00<br>• <b>T2–T6 buổi tối:</b> 17h00–20h30 (tầng 2)<br>• <b>Thứ 7:</b> 7h30–11h30 và 13h30–17h00 (tầng 2)<br>• <b>Chủ nhật & ngày lễ:</b> Nghỉ<br><br><i>📍 182 Lê Duẩn, TP Vinh, Nghệ An</i>`,
+  soLuong:`📊 <b>Kho tài liệu Thư viện Nguyễn Thúc Hào:</b><div class="stat-row"><div class="stat-box"><div class="stat-num">100K+</div><div class="stat-lbl">Bản sách in</div></div><div class="stat-box"><div class="stat-num">22K+</div><div class="stat-lbl">Tài liệu số</div></div><div class="stat-box"><div class="stat-num">5K+</div><div class="stat-lbl">Luận án/LV</div></div><div class="stat-box"><div class="stat-num">200+</div><div class="stat-lbl">Tạp chí</div></div></div><br>🔍 Tra cứu: <a href="${OPAC_SEARCH}" target="_blank">thuvien.vinhuni.edu.vn/opac</a>`,
+  lamThe_sv:`🪪 <b>Làm thẻ – Sinh viên ĐH Vinh:</b><br>• Thẻ SV <b>đồng thời là thẻ TV</b> – chỉ cần <b>kích hoạt</b><br>• Mang: <b>Thẻ SV + CCCD</b> đến quầy tầng 1<br>• Hoặc online: <a href="${LIB_WEB}" target="_blank">lib.vinhuni.edu.vn</a><br>• Hiệu lực: <b>1 năm học</b>, gia hạn đầu mỗi năm`,
+  lamThe_cb:`🪪 <b>Làm thẻ – Cán bộ / Giảng viên:</b><br>• Thẻ viên chức <b>đồng thời là thẻ TV</b><br>• Mang: <b>Thẻ cán bộ + CCCD</b> đến quầy tầng 1<br>• Hiệu lực: <b>1 năm</b>, gia hạn hàng năm`,
+  lamThe_ngoai:`🪪 <b>Thẻ bạn đọc – Người ngoài trường:</b><br>• Cần <b>Giấy giới thiệu</b> từ cơ quan<br>• Mang: CCCD + Giấy giới thiệu đến quầy<br>• Liên hệ: <a href="mailto:${LIB_EMAIL}">${LIB_EMAIL}</a>`,
+  vanLai:`🚶 <b>Quyền lợi khách vãng lai:</b><br>• <b>Vào đọc tại chỗ miễn phí</b> – xuất trình CCCD<br>• Sử dụng không gian đọc tầng 1<br>• <u>Không mượn tài liệu về nhà</u><br>• Muốn mượn → đăng ký thẻ với Giấy giới thiệu`,
+  muonTra_sv:`📦 <b>Mượn – Trả (Sinh viên):</b><br>• Tối đa: <b>3 cuốn/lần</b> – Thời hạn: <b>15 ngày</b><br>• Gia hạn: 1 lần tại quầy hoặc online<br>• <b>Không mượn:</b> luận án, luận văn, sách quý, tạp chí<br>• Trả tại: <b>Quầy Lưu hành, tầng 1</b>`,
+  muonTra_cb:`📦 <b>Mượn – Trả (Cán bộ/Giảng viên):</b><br>• Tối đa: <b>5 cuốn/lần</b> – Thời hạn: <b>30 ngày</b><br>• Gia hạn 1 lần, đặt mượn trước qua email`,
+  noiQuy:`📋 <b>Nội quy Thư viện Nguyễn Thúc Hào:</b><br>• Xuất trình thẻ khi qua cổng từ<br>• Đi nhẹ, nói khẽ – Tắt chuông điện thoại<br>• Không hút thuốc, không mang thức ăn/đồ uống<br>• Không tự ý mang tài liệu ra khi chưa làm thủ tục<br>• Không cắt xén, viết vẽ lên tài liệu<br>• Vi phạm: thu thẻ · bồi thường · thông báo về khoa`,
+  lienHe:`📞 <b>Liên hệ Thư viện Nguyễn Thúc Hào:</b><br>• 🌐 <a href="${LIB_WEB}" target="_blank">lib.vinhuni.edu.vn</a><br>• 🔍 OPAC: <a href="${OPAC_SEARCH}" target="_blank">thuvien.vinhuni.edu.vn/opac</a><br>• 📧 <a href="mailto:${LIB_EMAIL}">${LIB_EMAIL}</a><br>• 📍 182 Lê Duẩn, TP Vinh, Nghệ An`,
+  khongHieu:`Xin lỗi, tôi chưa hiểu câu hỏi 😅 Thử hỏi:<br><span class="chip">giờ mở cửa</span><span class="chip">làm thẻ</span><span class="chip">mượn sách</span><span class="chip">có sách X không</span><span class="chip">gợi ý tài liệu</span><br><br>Hoặc email: <a href="mailto:${LIB_EMAIL}">${LIB_EMAIL}</a>`,
+};
+
+// ══════════════════════════════════════════
+// NHẬN DIỆN Ý ĐỊNH
+// ══════════════════════════════════════════
+function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d'); }
+
+function extractBook(txt){
+  const t=norm(txt);
+  const pats=[
+    /(?:co|tim|muon tim).+?(?:sach|cuon|tai lieu|giao trinh)\s+(.+?)(?:\s+khong|\s+ko|\?|$)/,
+    /(?:sach|cuon|giao trinh|tai lieu)\s+[""]?(.+?)[""]?(?:\s+co\s*(?:khong|ko)|\s+khong|\?|$)/,
+    /thu vien (?:co|ban co|minh co)\s+(.+?)(?:\s+khong|\s+ko|\?|$)/,
+    /tim\s+(?:sach|tai lieu)?\s*:?\s*(.+?)(?:\?|$)/,
+    /tra cuu\s+(.+?)(?:\?|$)/,
+  ];
+  for(const p of pats){
+    const m=t.match(p);
+    if(m&&m[1]&&m[1].trim().length>2){
+      const found=m[1].trim();
+      const idx=norm(txt).indexOf(found);
+      return idx>=0?txt.substring(idx,idx+found.length).trim():found;
+    }
+  }
+  if((t.includes('co khong')||t.includes('co ko')||t.includes('?'))&&t.length<60){
+    const clean=txt.replace(/(?:thư viện|có không|có ko|không|có|bạn|mình|sách|cuốn|\?)/gi,'').trim();
+    if(clean.length>3)return clean;
+  }
+  return null;
+}
+
+function getIntent(txt){
+  const t=norm(txt);
+  if(/bao nhieu sach|so luong|kho tai lieu|bao nhieu tai lieu/.test(t)) return 'soLuong';
+  if(/gio|mo cua|dong cua|may gio|thu 6|thu 7|chu nhat|buoi sang|buoi toi/.test(t)) return 'gioMoCua';
+  if(/noi quy|quy dinh|cam|khong duoc|vi pham/.test(t)) return 'noiQuy';
+  if(/lien he|dia chi|email|website|o dau/.test(t)) return 'lienHe';
+  if(/van lai|khong co the|khach vang lai/.test(t)) return 'vanLai';
+  if(/danh gia|gop y|phan hoi/.test(t)) return 'feedback';
+  if(/sach moi|moi nhap|moi ve/.test(t)) return 'sachMoi';
+  if(/goi y|de xuat sach|theo nganh/.test(t)) return 'recommend';
+  if(/lam the|kich hoat the|the ban doc/.test(t)) return 'the';
+  if(/muon|tra sach|gia han|bao lau|may cuon|thoi han/.test(t)&&!/co sach|co cuon/.test(t)) return 'muon';
+  if(/opac|tra cuu|tim sach|tim tai lieu/.test(t)&&!extractBook(txt)) return 'search';
+  return null;
+}
+
+// ══════════════════════════════════════════
+// XỬ LÝ TIN NHẮN
+// ══════════════════════════════════════════
+function handleText(txt){
+  const t0=norm(txt);
+  if(/^(xin chao|chao|hello|hi|hey|alo)/.test(t0)){ if(!userType){showUserType();}else{addMsg('Xin chào! 👋 Tôi có thể giúp gì?');mainMenu();} return; }
+  if(/cam on|thank/.test(t0)){ addMsg('Không có gì! Rất vui được hỗ trợ bạn 😊'); mainMenu(); return; }
+  if(/tam biet|bye/.test(t0)){ addMsg('Tạm biệt! Chúc bạn học tập tốt 📚'); qw.innerHTML=''; return; }
+
+  // Đang trong mode nhập tìm kiếm
+  if(searchMode){ doSearch(txt, searchMode); return; }
+
+  // Ưu tiên tìm sách cụ thể
+  const book=extractBook(txt);
+  if(book){ doSearch(book,'title'); return; }
+
+  const intent=getIntent(txt);
+  if(intent==='soLuong') return reply(KB.soLuong);
+  if(intent==='gioMoCua') return reply(KB.gioMoCua);
+  if(intent==='noiQuy') return reply(KB.noiQuy);
+  if(intent==='lienHe') return reply(KB.lienHe);
+  if(intent==='vanLai') return reply(KB.vanLai);
+  if(intent==='feedback') return startFeedback();
+  if(intent==='sachMoi') return showSachMoi();
+  if(intent==='recommend') return startRecommend();
+  if(intent==='the') return askThe();
+  if(intent==='muon') return showMuon();
+  if(intent==='search') return startSearch();
+
+  addMsg(KB.khongHieu); mainMenu();
+}
+
+function send(){
+  const txt=ii.value.trim(); if(!txt) return;
+  ii.value=''; qw.innerHTML='';
+  addMsg(txt,true);
+  showTyping(()=>handleText(txt),380);
+}
+ii.addEventListener('keydown',e=>{ if(e.key==='Enter') send(); });
+
+setTimeout(()=>{ showUserType(); },200);
+</script>
